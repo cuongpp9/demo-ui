@@ -9,6 +9,33 @@ import saga from './saga';
 import reducer from './reducer';
 import { getListProducts } from './actions';
 import { makeGetListProducts } from './selectors';
+import { DataTable } from '../../components/common';
+
+const tableColumns = [
+  {
+    name: 'id',
+    label: 'ID',
+  },
+  {
+    name: 'productName',
+    label: 'Product Name',
+  },
+  {
+    name: 'price',
+    label: 'Price',
+  },
+  {
+    name: 'Edit',
+    label: 'Edit',
+    render: () => {
+      return (
+        <button className="no-border" type="button">
+          edit
+        </button>
+      );
+    },
+  },
+];
 
 class Products extends Component {
   state = {};
@@ -22,29 +49,13 @@ class Products extends Component {
     const { listProducts } = this.props;
     return (
       <div className="container-group">
-        <Link to="/" className="m-3 pt-3">User</Link>
+        <Link to="/" className="m-3 pt-3">
+          User
+        </Link>
         <h1 className="text-center p-3">List Products</h1>
         <div className="col-md-12 d-flex pt-4 container-body">
           <div className="col-md-12 no-padding">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col">id</th>
-                  <th scope="col">Product Name</th>
-                  <th scope="col">Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                {listProducts.length > 0 &&
-                  listProducts.map(user => (
-                    <tr key={user.id}>
-                      <th scope="row">{user.id}</th>
-                      <td>{user.productName}</td>
-                      <td>{user.price}</td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+            <DataTable columns={tableColumns} data={listProducts || []} />
           </div>
         </div>
       </div>
