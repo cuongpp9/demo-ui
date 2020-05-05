@@ -24,17 +24,6 @@ const tableColumns = [
     name: 'price',
     label: 'Price',
   },
-  {
-    name: 'Edit',
-    label: 'Edit',
-    render: () => {
-      return (
-        <button className="no-border" type="button">
-          edit
-        </button>
-      );
-    },
-  },
 ];
 
 class Products extends Component {
