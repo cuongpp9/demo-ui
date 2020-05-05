@@ -23,6 +23,7 @@ class Dashboard extends Component {
     const { listUsers } = this.props;
     return (
       <div className="container-group">
+         <Link to="/products" className="m-3 pt-3">Products</Link>
         <h1 className="text-center p-3">List User</h1>
         <div className="col-md-12 d-flex pt-4 container-body">
           <div className="col-md-12 no-padding">
